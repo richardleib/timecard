@@ -8,3 +8,8 @@ Timecard is a [Laravel](https://laravel.com)-based application for managing pers
 ### Features
 
 _// TODO: Write this_
+
+### Artisan Commands
+
+#### `user:create`
+Create a user without going through the registration flow. Will prompt for name, username, password, and email address
