@@ -16,4 +16,8 @@ class Client extends Model
         'hours_logged',
     ];
 
+    public function projects() {
+        return $this->hasMany('App\Project', 'client_id', 'id');
+    }
+
 }
