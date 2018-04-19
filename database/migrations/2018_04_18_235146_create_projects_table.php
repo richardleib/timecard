@@ -20,6 +20,7 @@ class CreateProjectsTable extends Migration
             $table->string('description')->nullable();
             $table->decimal('hours_logged', 7, 2)->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('project_users', function (Blueprint $table) {
