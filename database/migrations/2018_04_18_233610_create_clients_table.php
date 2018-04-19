@@ -18,7 +18,7 @@ class CreateClientsTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->integer('icon_media_id')->unsigned()->nullable();
-            $table->decimal('hours_logged')->default(0);
+            $table->decimal('hours_logged', 7, 2)->default(0);
             $table->timestamps();
             $table->softDeletes();
         });
