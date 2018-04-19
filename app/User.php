@@ -32,6 +32,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function clients() {
+        return $this->belongsToMany('App\Client', 'client_users');
+    }
+
     public function projects() {
         return $this->belongsToMany('App\Project', 'project_users');
     }
