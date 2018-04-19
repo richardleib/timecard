@@ -23,4 +23,8 @@ class Project extends Model
     public function users() {
         return $this->belongsToMany('App\User', 'project_users');
     }
+
+    public function entries() {
+        return $this->hasMany('App\Entry', 'project_id', 'id');
+    }
 }
