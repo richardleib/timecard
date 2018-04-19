@@ -20,4 +20,8 @@ class Client extends Model
         return $this->hasMany('App\Project', 'client_id', 'id');
     }
 
+    public function users() {
+        return $this->belongsToMany('App\User', 'client_users');
+    }
+
 }

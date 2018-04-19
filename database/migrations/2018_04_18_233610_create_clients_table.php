@@ -22,6 +22,11 @@ class CreateClientsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        Schema::create('client_users', function (Blueprint $table) {
+            $table->integer('client_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+        });
     }
 
     /**
@@ -32,5 +37,6 @@ class CreateClientsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('clients');
+        Schema::dropIfExists('client_users');
     }
 }
