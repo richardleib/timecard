@@ -11,7 +11,8 @@ Timecard is a [Laravel](https://laravel.com)-based application for managing pers
 
 ### Features
 
-_// TODO: Write this_
+- Artisan command to generate a user (handy for organizations that just need to create users internally without exposing a registration form)
+- API (Coming soon)
 
 ### Setup
 
