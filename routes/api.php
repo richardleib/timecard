@@ -24,7 +24,7 @@ Route::group(['prefix' => 'v1'], function() {
     |--------------------------------------------------------------------------
     */
     Route::get('clients', ['uses' => 'ClientController@api_index'])->middleware('auth:api');
-    Route::group(['prefix' => 'client'], function() {
-        
+    Route::group(['prefix' => 'client', 'middleware' => 'auth:api'], function() {
+        Route::post('/', ['uses' => 'ClientController@api_create']);
     });
 });
