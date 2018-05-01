@@ -33,8 +33,6 @@ class ProjectUpdateHours implements ShouldQueue
     {
         $hours = $this->project->entries->sum('hours');
 
-        \Log::info('Project hours logged', ['hours' => $hours]);
-
         try {
             $this->project->update(['hours_logged' => $hours]);
         }
