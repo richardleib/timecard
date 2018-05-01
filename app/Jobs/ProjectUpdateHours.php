@@ -43,5 +43,20 @@ class ProjectUpdateHours implements ShouldQueue
             ]);
             throw new \Exeption('Error updating project hours');
         }
+
+        // Update attached invoices
+        foreach($this->project->invoices as $invoice) {
+            try {
+                dispatch(new \App\Jobs\InvoiceUpdateData($invoice))
+                    ->onQueue(env('QUEUE_NAME_DATA', 'data'));
+            }
+            catch(\Exception $e) {
+                \Log::error('Error dispatching InvoiceUpdateData', [
+                    'err_msg'       =>  $e->getMessage(),
+                    'invoice_id'    =>  $invoice->id,
+                ]);
+                throw new \Exception('Error dispatching InvoiceUpdateData');
+            }
+        }
     }
 }
