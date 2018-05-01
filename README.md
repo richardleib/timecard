@@ -23,3 +23,8 @@ Timecard is a [Laravel](https://laravel.com)-based application for managing pers
 
 #### `user:create`
 Create a user without going through the registration flow. Will prompt for name, username, password, and email address
+
+### .env Variables
+
+- `QUEUE_NAME_DATA`: The name of the queue to handle data
+- `QUEUE_NAME_MEDIA`: Name of the queue to handle media
