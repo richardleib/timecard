@@ -27,4 +27,8 @@ class Project extends Model
     public function entries() {
         return $this->hasMany('App\Entry', 'project_id', 'id');
     }
+
+    public function invoices() {
+        return $this->belongsToMany('App\Invoice', 'invoice_projects');
+    }
 }
