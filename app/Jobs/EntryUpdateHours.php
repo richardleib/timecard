@@ -50,7 +50,20 @@ class EntryUpdateHours implements ShouldQueue
                 throw new \Exception('Error updating entry');
             }
 
-            // TODO: Dispatch the job to update the entry's project
+            // Dispatch the job to update the entry's project
+            if($this->entry->project) {
+                try {
+                    dispatch(new \App\Jobs\ProjectUpdateHours($this->entry->project))
+                        ->onQueue(env('QUEUE_NAME_DATA', 'data'));
+                }
+                catch(\Exception $e) {
+                    \Log::error('Error dispatching ProjectUpdateHours', [
+                        'err_msg'   =>  $e->getMessage(),
+                        'entry_id'  =>  $this->entry->id,
+                    ]);
+                    throw new \Exception('Error dispatching ProjectUpdateHours');
+                }
+            }
         }
         else {
             \Log::warning('Entry does not have ending timestamp', [
