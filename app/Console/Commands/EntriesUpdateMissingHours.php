@@ -11,7 +11,7 @@ class EntriesUpdateMissingHours extends Command
      *
      * @var string
      */
-    protected $signature = 'entry:update_missing_hours';
+    protected $signature = 'entry:update_missing_hours {--F|force}';
 
     /**
      * The console command description.
@@ -37,7 +37,10 @@ class EntriesUpdateMissingHours extends Command
      */
     public function handle()
     {
-        $entries = \App\Entry::whereNull('hours')->whereNotNull('ended_at')->get();
+        // Get the entries
+        if($this->option('force')) $entries = \App\Entry::all();
+        else $entries = \App\Entry::whereNull('hours')->whereNotNull('ended_at')->get();
+
         foreach($entries as $entry) {
             $this->info("Entry #{$entry->id}");
             try {
