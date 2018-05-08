@@ -4,12 +4,24 @@ document.addEventListener('DOMContentLoaded', function(event) {
         el: '#dashboardApp',
         data: {
             clientList: [],
+            addClientName: '',
         },
         methods: {
+            addClient: function() {
+                axios.post('/api/v1/client', {
+                        name: this.addClientName,
+                    })
+                    .then(function(response) {
+                        this.clientList.push(response.data.data);
+                        this.addClientName = '';
+                    }.bind(this))
+                    .catch(function(error) {
+                        console.error(error);
+                    });
+            },
             fetchClients: function() {
                 axios.get('/api/v1/clients')
                     .then(function(response) {
-                        console.log(response.data.data);
                         this.clientList = response.data.data;
                     }.bind(this))
                     .catch(function(error) {
@@ -18,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
             },
         },
         mounted: function() {
-            console.log('dashboard app mounted');
             this.fetchClients();
         },
     });

@@ -18,6 +18,14 @@
                     <a :href="client.url">@{{client.name}}</a>
                 </li>
             </ul>
+
+            {{-- Create client --}}
+            <hr />
+            <div class="form-group">
+                <label for="name">Add Client</label>
+                <input type="text" v-model="addClientName" class="form-control form-control-sm" placeholder="Client name" />
+            </div>
+            <button type="submit" v-on:click="addClient" class="btn btn-block btn-sm btn-success">Add Client</button>
         </div>
 
         {{-- Main content list --}}

@@ -73,12 +73,22 @@ document.addEventListener('DOMContentLoaded', function (event) {
     var dashboardApp = new Vue({
         el: '#dashboardApp',
         data: {
-            clientList: []
+            clientList: [],
+            addClientName: ''
         },
         methods: {
+            addClient: function addClient() {
+                axios.post('/api/v1/client', {
+                    name: this.addClientName
+                }).then(function (response) {
+                    this.clientList.push(response.data.data);
+                    this.addClientName = '';
+                }.bind(this)).catch(function (error) {
+                    console.error(error);
+                });
+            },
             fetchClients: function fetchClients() {
                 axios.get('/api/v1/clients').then(function (response) {
-                    console.log(response.data.data);
                     this.clientList = response.data.data;
                 }.bind(this)).catch(function (error) {
                     console.error(error);
@@ -86,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
             }
         },
         mounted: function mounted() {
-            console.log('dashboard app mounted');
             this.fetchClients();
         }
     });
