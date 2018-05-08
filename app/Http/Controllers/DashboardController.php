@@ -13,11 +13,6 @@ class DashboardController extends Controller
     |--------------------------------------------------------------------------
     */
     public function home() {
-        $clients    =   Auth::user()->clients;
-        $projects   =   Auth::user()->projects;
-        
-        return view('dashboard.home')
-                ->with('clients', $clients)
-                ->with('projects', $projects);
+        return view('dashboard.home');
     }
 }
