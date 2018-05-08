@@ -18,3 +18,10 @@ Route::post('login', ['uses' => 'AccountController@login']);
 |--------------------------------------------------------------------------
 */
 Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@home'])->middleware('auth');
+
+/*
+|--------------------------------------------------------------------------
+| Clients
+|--------------------------------------------------------------------------
+*/
+Route::get('client/{client}', ['as' => 'client', 'uses' => 'ClientController@detail']);
