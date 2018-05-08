@@ -23,7 +23,7 @@ class ClientResource extends JsonResource
             'users'         =>  \App\Http\Resources\ProfileResource::collection($this->whenLoaded('users')),
             // TODO: Icon
             // TODO: Members
-            // TODO: URL
+            'url'           =>  route('client', $this->id),
         ];
     }
 }

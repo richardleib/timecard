@@ -15,7 +15,7 @@
             {{-- Clients --}}
             <ul class="list-group">
                 <li v-for="client in clientList" :key="client.id" class="list-group-item">
-                    @{{client.name}}
+                    <a :href="client.url">@{{client.name}}</a>
                 </li>
             </ul>
         </div>
