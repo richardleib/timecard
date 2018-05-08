@@ -9,6 +9,7 @@
 
         {{-- Assets --}}
         <script src="{{ asset('js/app.js') }}"></script>
+        @stack('javascript')
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
 
         {{-- TODO: Title --}}
