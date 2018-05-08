@@ -17,7 +17,7 @@ class AccountController extends Controller
     }
     public function login(Request $request) {
         if(Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->intended($request->get('return_to', '/'));
+            return redirect()->intended($request->get('return_to', '/dashboard'));
         }
         else return redirect()->back()->withInput()->with('error_msg', 'Email or password is incorrect');
     }
